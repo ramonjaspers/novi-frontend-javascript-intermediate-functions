@@ -4,6 +4,7 @@
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
+console.log('-------------OPD 1----------------');
 /* Opdracht  1: Cum Laude */
 
 /* 1a: Script schrijven  */
@@ -13,9 +14,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorg ik ervoor dat dit ook werkt wanneer de array 100 entries bevat?
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
-
+let amount = 0;
+grades.forEach(grade => {
+    if (grade >= 8) {
+        amount++;
+    }
+});
+console.log(amount);
 // ---- Verwachte uitkomst: 6
-
+console.log('-----------------------------');
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
@@ -27,9 +34,21 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function cumLaude(numbers) {
+    let amount = 0;
+    numbers.forEach(number => {
+        if (number >= 8) {
+            amount++;
+        }
+    });
 
+    return amount;
+}
+console.log(cumLaude(grades));
+console.log(cumLaude([6, 4, 5]));
+console.log(cumLaude([8, 9, 4, 6, 10]));
 
-
+console.log('-------------OPD 2----------------');
 /* Opdracht  2: Gemiddeld cijfer */
 
 /* 2a: Script schrijven  */
@@ -40,6 +59,14 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
+//tel alle grades bij elkaar op
+let total = 0;
+grades.forEach(grade => {
+    total += grade;
+});
+
+//deel het totaal door het aantal grades
+console.log(total / grades.length);
 // ---- Verwachte uitkomst: 6.642857142857143
 
 
@@ -47,21 +74,35 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+function averageGrade(grades) {
+    let total = 0;
+    grades.forEach(grade => {
+        total += grade;
+    });
 
+    // return total / grades.length;
+    const average = total / grades.length
+    return average.toFixed(2);
+}
 // ---- Verwachte uitkomsten:
 // averageGrade(grades) geeft 6.642857142857143
-// averageGrade([6, 4, 5]) geeft xxxx
-// averageGrade([8, 9, 4, 6, 10]) geeft xxxx
-
+// averageGrade([6, 4, 5]) geeft 5
+// averageGrade([8, 9, 4, 6, 10]) geeft 7.4
+console.log(averageGrade(grades));
+console.log(averageGrade([6, 4, 5]));
+console.log(averageGrade([8, 9, 4, 6, 10]));
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+//added .toFixed(2)
+//see https://stackoverflow.com/questions/4098685/rounding-numbers-to-2-digits-after-comma
 
 
 /* Bonusopdracht: hoogste cijfer */
+
+// i wont do the bonusopdracht since i already did https://github.com/ramonjaspers/novi-frontend-frontend-arrays-and-objects/tree/huiswerk by accident. So that will be my bonus exercise 😂.
 
 /* 3a: Script schrijven  */
 // Schrijf een script die op basis van de grades array (hierboven) checkt wat het hoogst behaalde cijfer is. Je mag hier geen bestaande methoden voor gebruiken. Schrijf de stapjes eerst uit en vraag jezelf de volgende dingen af:
