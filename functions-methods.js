@@ -9,6 +9,12 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+function getEmailDomain(email) {
+    return email.substring(email.lastIndexOf("@") + 1);
+}
+console.log(getEmailDomain("n.eeken@novi-education.nl"));
+console.log(getEmailDomain("t.mellink@novi.nl"));
+console.log(getEmailDomain("a.wiersma@outlook.com"));
 
 
 
@@ -20,6 +26,19 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
+function typeOfEmail(email) {
+    if (email.includes('@novi-education.')) {
+        return 'Student';
+    } else if (email.includes('@novi.')) {
+        return 'Medewerker';
+    } else {
+        return 'Extern'
+    }
+}
+console.log(typeOfEmail("n.eeken@novi-education.nl"));
+console.log(typeOfEmail("t.mellink@novi.nl"));
+console.log(typeOfEmail("novi.nlaapjesk@outlook.com"));
+console.log(typeOfEmail("a.wiersma@outlook.com"));
 
 
 /* Opdracht  3 */
@@ -34,3 +53,13 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(email) {
+    const emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return emailRE.test(email);
+}
+console.log(checkEmailValidity("n.eeken@novi.nl"));
+console.log(checkEmailValidity("tessmellink@novi.nl"));
+console.log(checkEmailValidity("n.eekenanovi.nl"));
+console.log(checkEmailValidity("n.eeken@novinl."));
+console.log(checkEmailValidity("tessmellink@novi,nl"));
